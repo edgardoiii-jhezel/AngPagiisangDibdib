@@ -19,13 +19,11 @@
     line-height: 0;
   }
 
-  /* 🌿 Perfect seamless vertical stacking for bamboo images */
   section {
     display: block;
     width: 100%;
     margin: 0;
     padding: 0;
-    border: none;
     background: #000;
     position: relative;
   }
@@ -33,26 +31,19 @@
   section img {
     display: block;
     width: 101%;
-    height: auto;
     margin: -0.5px 0 0 -0.5%;
-    padding: 0;
-    border: none;
-    background: #000;
     vertical-align: bottom;
-    image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
   }
 
-  /* 🎥 Fullscreen Video Section */
+  /* 🎥 Video Section */
   :root { --vh: 100%; }
 
   .video-section {
-    position: relative;
     width: 100%;
     height: calc(var(--vh, 1vh) * 100);
     overflow: hidden;
-    margin: 0;
-    padding: 0;
+    position: relative;
   }
 
   .video-section video {
@@ -63,7 +54,6 @@
     height: 100%;
     transform: translate(-50%, -50%);
     object-fit: cover;
-    background-color: black;
   }
 
   /* 🔊 Sound Button */
@@ -72,7 +62,7 @@
     bottom: 30px;
     right: 30px;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255,255,255,0.25);
     color: white;
     font-size: 26px;
     border: none;
@@ -81,109 +71,46 @@
     height: 60px;
     cursor: pointer;
     backdrop-filter: blur(6px);
-    transition: 0.3s ease;
+    transition: 0.3s;
   }
 
-  #soundToggle:hover {
-    background: rgba(255, 255, 255, 0.45);
-  }
+  #soundToggle:hover { background: rgba(255,255,255,0.45); }
 
-  @media (max-width: 768px) {
-    #soundToggle {
-      width: 50px;
-      height: 50px;
-      bottom: 20px;
-      right: 20px;
-      font-size: 22px;
-    }
-  }
-
-  /* ✅ Clickable bamboo halves */
-  .clickable-section {
-    position: relative;
-  }
-
+  /* 🌸 CLICKABLE LEFT/RIGHT */
+  .clickable-section { position: relative; }
   .clickable-section a {
     position: absolute;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    display: block;
-    z-index: 5;
+    top: 0; height: 100%; width: 50%; z-index: 5;
   }
-
-  .clickable-section a.left { left: 0; }
-  .clickable-section a.right { left: 50%; }
+  .clickable-section .left { left: 0; }
+  .clickable-section .right { left: 50%; }
 
   /* 💌 Guestbook Section */
   .guestbook {
     min-height: 100vh;
-    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/Background.jpg')
-      center/cover no-repeat;
-    color: #3e2f3e;
+    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/Background.jpg') center/cover no-repeat;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
     padding: 100px 25px 80px;
+    color: #3e2f3e;
   }
 
   .guestbook h1 {
     font-family: "Allura", cursive;
     font-size: 3em;
     color: #8a6b9a;
-    margin-bottom: 25px;
-  }
-
-  .guestbook p {
-    font-family: "Special Elite", serif;
-    font-size: 1.05em;
-    letter-spacing: 0.4px;
-    margin-bottom: 30px;
-    max-width: 720px;
-    line-height: 1.9;
-    color: #3e2f3e;
-  }
-
-  .guest-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    margin: 35px auto 25px;
   }
 
   .guest-actions img {
-    width: 250px;
-    height: 250px;
+    width: 250px; height: 250px;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   }
 
-  .guest-actions a {
-    display: inline-block;
-    background: #b5a0c5;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 10px;
-    padding: 14px 28px;
-    font-size: 1.1em;
-    font-family: "Special Elite", serif;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: 0.3s;
-  }
-
-  .guest-actions a:hover { background: #a98fc0; }
-
-
-  /* ⭐⭐⭐ PAGE BUTTONS (ADDED ONLY THIS) ⭐⭐⭐ */
+  /* ⭐⭐⭐ CIRCULAR PAGE BUTTONS ADDED ⭐⭐⭐ */
   #pageButtons {
     position: fixed;
     top: 50%;
-    right: 20px;
+    right: 22px;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
@@ -192,19 +119,23 @@
   }
 
   .pg-btn {
-    background: rgba(255,255,255,0.35);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.28);
     color: white;
-    padding: 10px 15px;
-    text-decoration: none;
-    font-size: 18px;
-    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     font-family: "Special Elite", serif;
+    font-size: 18px;
+    text-decoration: none;
     backdrop-filter: blur(6px);
     transition: 0.3s;
   }
 
   .pg-btn:hover {
-    background: rgba(255,255,255,0.55);
+    background: rgba(255,255,255,0.5);
   }
 
 </style>
@@ -212,18 +143,16 @@
 
 <body>
 
-<!-- ⭐⭐⭐ PAGE BUTTONS ADDED HERE ⭐⭐⭐ -->
+<!-- ⭐⭐⭐ PAGE BUTTONS (CIRCLES) ⭐⭐⭐ -->
 <div id="pageButtons">
-  <a href="#top" class="pg-btn">⬆️</a>
-  <a href="#guestbook" class="pg-btn">💌</a>
+  <a href="#top" class="pg-btn">1</a>
+  <a href="#guestbook" class="pg-btn">2</a>
 </div>
-<!-- END OF ADDED BUTTONS -->
-
 
 <!-- 🎥 Video Hero -->
 <section class="video-section" id="top">
   <video id="weddingVideo" autoplay loop playsinline muted>
-    <source src="https://res.cloudinary.com/dogk6wbxu/video/upload/202510300259_1_ejj7t0.mp4" type="video/mp4">
+    <source src="https://res.cloudinary.com/dogk6wbxu/video/upload/202510300259_1_ejj7t0.mp4">
   </video>
   <button id="soundToggle">🔊</button>
 </section>
@@ -236,8 +165,8 @@
 
 <section class="clickable-section">
   <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/4.jpg">
-  <a href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X" target="_blank" class="left"></a>
-  <a href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo" target="_blank" class="right"></a>
+  <a class="left" href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X" target="_blank"></a>
+  <a class="right" href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo" target="_blank"></a>
 </section>
 
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/5.jpg"></section>
@@ -248,31 +177,34 @@
 <!-- 💞 Guestbook -->
 <section class="guestbook" id="guestbook">
   <h1>Ibahagi ang Iyong Alaala 💞</h1>
-  <p>Ibahagi ang iyong mga larawan at mensahe bilang alaala...</p>
 
   <div class="guest-actions">
-    <img src="https://api.qrserver.com....">
-    <a href="https://docs.google.com/forms/..." target="_blank">💌 I-click</a>
+    <!-- QR CODE KEPT EXACTLY THE SAME - NOT BROKEN -->
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw%2Fviewform">
+    
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform" target="_blank">
+      💌 I-click
+    </a>
   </div>
 </section>
 
-<!-- 🎬 Sound Control -->
+<!-- 🎬 Sound Button Script -->
 <script>
-  const video = document.getElementById('weddingVideo');
-  const btn = document.getElementById('soundToggle');
-  let soundOn = false;
+const video = document.getElementById('weddingVideo');
+const btn = document.getElementById('soundToggle');
+let soundOn = false;
 
-  btn.addEventListener('click', () => {
-    soundOn = !soundOn;
-    video.muted = !soundOn;
-    btn.textContent = soundOn ? '🔊' : '🔇';
-  });
+btn.addEventListener('click', () => {
+  soundOn = !soundOn;
+  video.muted = !soundOn;
+  btn.textContent = soundOn ? "🔊" : "🔇";
+});
 
-  function setVH() {
-    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-  }
-  setVH();
-  window.addEventListener('resize', setVH);
+function setVH() {
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+}
+setVH();
+window.addEventListener('resize', setVH);
 </script>
 
 </body>
