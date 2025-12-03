@@ -19,43 +19,38 @@
     line-height: 0;
   }
 
-  /* 🌿 Perfect seamless vertical stacking */
+  /* 🌿 Image Sections */
   section {
     display: block;
     width: 100%;
     margin: 0;
     padding: 0;
     background: #000;
-    position: relative;
   }
 
   section img {
     display: block;
     width: 101%;
-    margin: -0.5px 0 0 -0.5%;
-    vertical-align: bottom;
+    margin-left: -0.5%;
     image-rendering: crisp-edges;
   }
 
-  /* 🎥 Video Section */
+  /* 🎥 Fullscreen Video */
   :root { --vh: 100%; }
 
   .video-section {
+    position: relative;
     width: 100%;
     height: calc(var(--vh, 1vh) * 100);
     overflow: hidden;
-    position: relative;
   }
 
   .video-section video {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    height: 100%;
+    top: 50%; left: 50%;
+    width: 100%; height: 100%;
     transform: translate(-50%, -50%);
     object-fit: cover;
-    background-color: black;
   }
 
   /* 🔊 Sound Button */
@@ -63,112 +58,68 @@
     position: absolute;
     bottom: 30px;
     right: 30px;
-    z-index: 10;
     background: rgba(255,255,255,0.25);
     color: white;
     font-size: 26px;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 60px; height: 60px;
     border: none;
     cursor: pointer;
+    z-index: 10;
     backdrop-filter: blur(6px);
-    transition: 0.3s;
   }
 
-  #soundToggle:hover { background: rgba(255,255,255,0.45); }
-
-  @media (max-width: 768px) {
-    #soundToggle {
-      width: 50px;
-      height: 50px;
-      bottom: 20px;
-      right: 20px;
-      font-size: 22px;
-    }
-  }
-
-  /* ⭐ NEW: Right-side Scroll Down Arrow (replacing circle buttons) */
-  #scrollRightArrow {
+  /* ⭐ RIGHT-SIDE DOT NAVIGATION */
+  #pageDots {
     position: fixed;
     top: 50%;
     right: 22px;
     transform: translateY(-50%);
-    font-size: 32px;
-    color: white;
-    opacity: 0.8;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     z-index: 9999;
-    transition: 0.3s;
-    user-select: none;
   }
 
-  #scrollRightArrow:hover {
-    opacity: 1;
-    transform: translateY(-50%) scale(1.15);
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.45);
+    cursor: pointer;
+    transition: 0.3s;
   }
+
+  .dot:hover { background: rgba(255,255,255,0.85); }
 
   @media (max-width: 768px) {
-    #scrollRightArrow {
-      font-size: 26px;
-      right: 14px;
-    }
+    #pageDots { right: 12px; }
+    .dot { width: 10px; height: 10px; }
   }
 
-  /* 💌 Guestbook Section */
+  /* 💌 Guestbook */
   .guestbook {
     min-height: 100vh;
-    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/Background.jpg')
-      center/cover no-repeat;
-    color: #3e2f3e;
-    text-align: center;
+    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/Background.jpg') center/cover no-repeat;
     padding: 100px 25px 80px;
+    text-align: center;
+    color: #3e2f3e;
   }
 
   .guestbook h1 {
     font-family: "Allura", cursive;
     font-size: 3em;
     color: #8a6b9a;
-    margin-bottom: 20px;
-  }
-
-  .guestbook p {
-    font-family: "Special Elite", serif;
-    font-size: 1.05em;
-    max-width: 720px;
-    margin: 0 auto 25px;
-    line-height: 1.9;
-  }
-
-  .guest-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
   }
 
   .guest-actions img {
-    width: 250px;
-    height: 250px;
+    width: 250px; height: 250px;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    margin: 20px auto;
   }
-
-  .guest-actions a {
-    background: #b5a0c5;
-    color: white;
-    padding: 14px 28px;
-    text-decoration: none;
-    border-radius: 10px;
-    font-size: 1.1em;
-    font-family: "Special Elite", serif;
-    transition: 0.3s;
-  }
-
-  .guest-actions a:hover { background: #a98fc0; }
 
   .closing-message {
-    margin-top: 30px;
+    margin-top: 25px;
     font-style: italic;
     color: #7b5f8e;
   }
@@ -177,11 +128,23 @@
 
 <body>
 
-<!-- ⭐ NEW RIGHT-SIDE SCROLL ARROW -->
-<div id="scrollRightArrow">▼</div>
+<!-- ⭐ RIGHT-SIDE DOT NAVIGATION (11 DOTS) -->
+<div id="pageDots">
+  <div class="dot" onclick="scrollToSection(0)"></div>
+  <div class="dot" onclick="scrollToSection(1)"></div>
+  <div class="dot" onclick="scrollToSection(2)"></div>
+  <div class="dot" onclick="scrollToSection(3)"></div>
+  <div class="dot" onclick="scrollToSection(4)"></div>
+  <div class="dot" onclick="scrollToSection(5)"></div>
+  <div class="dot" onclick="scrollToSection(6)"></div>
+  <div class="dot" onclick="scrollToSection(7)"></div>
+  <div class="dot" onclick="scrollToSection(8)"></div>
+  <div class="dot" onclick="scrollToSection(9)"></div>
+  <div class="dot" onclick="scrollToSection(10)"></div>
+</div>
 
-<!-- 🎥 Video Hero -->
-<section class="video-section" id="top">
+<!-- 🎥 Hero Video Section -->
+<section class="video-section" id="sec0">
   <video id="weddingVideo" autoplay loop playsinline muted>
     <source src="https://res.cloudinary.com/dogk6wbxu/video/upload/202510300259_1_ejj7t0.mp4">
   </video>
@@ -189,27 +152,27 @@
 </section>
 
 <!-- 🌿 Bamboo Pages -->
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/1.jpg"></section>
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/prenup.jpg"></section>
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/3.jpg"></section>
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/2.jpg"></section>
+<section id="sec1"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/1.jpg"></section>
+<section id="sec2"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/prenup.jpg"></section>
+<section id="sec3"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/3.jpg"></section>
+<section id="sec4"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/2.jpg"></section>
 
-<section class="clickable-section">
+<section id="sec5" class="clickable-section">
   <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/4.jpg">
   <a class="left" href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X" target="_blank"></a>
   <a class="right" href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo" target="_blank"></a>
 </section>
 
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/5.jpg"></section>
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/6.jpg"></section>
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/7.jpg"></section>
-<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/8.jpg"></section>
+<section id="sec6"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/5.jpg"></section>
+<section id="sec7"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/6.jpg"></section>
+<section id="sec8"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/7.jpg"></section>
+<section id="sec9"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/8.jpg"></section>
 
 <!-- 💞 Guestbook -->
-<section class="guestbook" id="guestbook">
+<section class="guestbook" id="sec10">
   <h1>Ibahagi ang Iyong Alaala 💞</h1>
 
-  <p>Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisa.
+  <p>Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisa.  
   Ang bawat larawan at mensahe ay magiging bahagi ng aming kwento — mga sandaling habambuhay naming iingatan.</p>
 
   <div class="guest-actions">
@@ -222,32 +185,31 @@
   </div>
 
   <p class="closing-message">
-    💞 Maraming salamat sa pagbabahagi ng iyong mga alaala!
-    <br>Ang iyong mensahe ay magpapasaya sa aming puso sa tuwing aming babalikan ito.
-    <br><br>— Nagmamahal,<br><strong>Edgardo III at Jhezel 💍</strong>
+    💞 Maraming salamat sa pagbabahagi ng iyong mga alaala!  
+    <br>— Nagmamahal,<br><strong>Edgardo III at Jhezel 💍</strong>
   </p>
 </section>
 
 <!-- 🎬 JS -->
 <script>
-  const video = document.getElementById('weddingVideo');
-  const btn = document.getElementById('soundToggle');
+function scrollToSection(i) {
+  const target = document.getElementById("sec" + i);
+  target.scrollIntoView({ behavior: "smooth" });
+}
 
-  btn.addEventListener('click', () => {
-    video.muted = !video.muted;
-    btn.textContent = video.muted ? "🔇" : "🔊";
-  });
+const video = document.getElementById('weddingVideo');
+const btn = document.getElementById('soundToggle');
 
-  function setVH() {
-    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-  }
-  setVH();
-  window.addEventListener('resize', setVH);
+btn.onclick = () => {
+  video.muted = !video.muted;
+  btn.textContent = video.muted ? "🔇" : "🔊";
+};
 
-  /* ⭐ Scroll down when right arrow is clicked */
-  document.getElementById("scrollRightArrow").addEventListener("click", () => {
-    window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
-  });
+function setVH() {
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+}
+setVH();
+window.addEventListener('resize', setVH);
 </script>
 
 </body>
