@@ -67,10 +67,10 @@
     background: rgba(255,255,255,0.25);
     color: white;
     font-size: 26px;
-    border: none;
     border-radius: 50%;
     width: 60px;
     height: 60px;
+    border: none;
     cursor: pointer;
     backdrop-filter: blur(6px);
     transition: 0.3s;
@@ -97,8 +97,8 @@
     background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/Background.jpg')
       center/cover no-repeat;
     text-align: center;
-    color: #3e2f3e;
     padding: 100px 25px 80px;
+    color: #3e2f3e;
   }
 
   .guestbook h1 {
@@ -135,37 +135,44 @@
 
   .guest-actions a:hover { background: #a98fc0; }
 
-  /* 🌟 SCROLL PROGRESS BAR */
+  /* 🌿 Bamboo Scroll Progress Bar */
   #scrollProgress {
     position: fixed;
     top: 0;
     right: 0;
-    width: 6px;
+    width: 10px;
     height: 0;
-    background: linear-gradient(180deg, #f7d6ff, #d7b0ff, #c09bff);
-    border-radius: 4px;
+    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/bamboo-texture.jpg');
+    background-size: cover;
+    border-radius: 6px;
     z-index: 9999;
-    transition: height 0.2s ease, opacity 0.3s ease, right 0.3s ease;
+
+    /* fade-in animation */
+    opacity: 0;
+    transform: translateX(20px);
+
+    transition:
+      height 0.25s ease,
+      opacity 1.2s ease,
+      transform 1.2s ease;
   }
 
-  /* Auto-hide animation */
   .hide-progress {
     opacity: 0;
     right: -20px;
   }
-
 </style>
 </head>
 
 <body>
 
-<!-- Scroll Progress Bar -->
+<!-- 🌿 Scroll Progress Bar -->
 <div id="scrollProgress"></div>
 
 <!-- 🎥 Video Hero -->
 <section id="top" class="video-section">
   <video id="weddingVideo" autoplay loop muted playsinline>
-    <source src="https://res.cloudinary.com/dogk6wbxu/video/upload/202510300259_1_ejj7t0.mp4" type="video/mp4">
+    <source src="https://res.cloudinary.com/dogk6wbxu/video/upload/202510300259_1_ejj7t0.mp4">
   </video>
   <button id="soundToggle">🔊</button>
 </section>
@@ -177,9 +184,79 @@
 <section id="p2"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/2.jpg"></section>
 
 <section id="p4" class="clickable-section">
-  <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/4.jpg">
+  <img src="https://raw.githubusercontent.com/edgardoiii-jh
+ezel/AngPagiisangDibdib/main/4.jpg">
   <a class="left" href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X" target="_blank"></a>
   <a class="right" href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo" target="_blank"></a>
 </section>
 
-<section id="p5"><img src="https://raw.g
+<section id="p5"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/5.jpg"></section>
+<section id="p6"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/6.jpg"></section>
+<section id="p7"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/7.jpg"></section>
+<section id="p8"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/8.jpg"></section>
+
+<!-- 💞 Guestbook -->
+<section id="guestbook" class="guestbook">
+  <h1>Ibahagi ang Iyong Alaala 💞</h1>
+  <p>Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisa.</p>
+
+  <div class="guest-actions">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform" target="_blank">💌 I-click</a>
+  </div>
+
+  <p style="margin-top:30px;font-style:italic;color:#7b5f8e;">
+    💞 Maraming salamat sa pagbabahagi ng iyong mga alaala!  
+    <br>— Nagmamahal, <strong>Edgardo III at Jhezel 💍</strong>
+  </p>
+</section>
+
+<!-- 🎬 Scripts -->
+<script>
+/* Sound Toggle */
+const video = document.getElementById('weddingVideo');
+const btn = document.getElementById('soundToggle');
+
+btn.addEventListener('click', () => {
+  video.muted = !video.muted;
+  btn.textContent = video.muted ? "🔇" : "🔊";
+});
+
+/* Fix mobile 100vh */
+function setVH() {
+  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+}
+setVH();
+window.addEventListener('resize', setVH);
+
+/* 🌿 Fade-in bamboo bar on load */
+window.addEventListener("load", () => {
+  const bar = document.getElementById("scrollProgress");
+  bar.style.opacity = "1";
+  bar.style.transform = "translateX(0)";
+});
+
+/* 🌿 Scroll Progress Bar */
+const progressBar = document.getElementById("scrollProgress");
+let lastScroll = 0;
+
+window.addEventListener("scroll", () => {
+  let scrollTop = window.pageYOffset;
+  let docHeight = document.body.scrollHeight - window.innerHeight;
+  let scrolled = (scrollTop / docHeight) * 100;
+
+  progressBar.style.height = scrolled + "%";
+
+  // Auto-hide when scrolling down
+  if (scrollTop > lastScroll) {
+    progressBar.classList.add("hide-progress");
+  } else {
+    progressBar.classList.remove("hide-progress");
+  }
+
+  lastScroll = scrollTop <= 0 ? 0 : scrollTop;
+});
+</script>
+
+</body>
+</html>
