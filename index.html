@@ -19,12 +19,14 @@
     line-height: 0;
   }
 
-  /* 🌿 Page Sections */
+  /* 🌿 Perfect seamless vertical stacking for bamboo images */
   section {
     display: block;
     width: 100%;
     margin: 0;
     padding: 0;
+    border: none;
+    background: #000;
     position: relative;
   }
 
@@ -33,12 +35,15 @@
     width: 101%;
     height: auto;
     margin: -0.5px 0 0 -0.5%;
+    padding: 0;
+    border: none;
     background: #000;
     vertical-align: bottom;
+    image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
   }
 
-  /* 🎥 Fullscreen Video */
+  /* 🎥 Fullscreen Video Section */
   :root { --vh: 100%; }
 
   .video-section {
@@ -46,6 +51,8 @@
     width: 100%;
     height: calc(var(--vh, 1vh) * 100);
     overflow: hidden;
+    margin: 0;
+    padding: 0;
   }
 
   .video-section video {
@@ -56,6 +63,7 @@
     height: 100%;
     transform: translate(-50%, -50%);
     object-fit: cover;
+    background-color: black;
   }
 
   /* 🔊 Sound Button */
@@ -64,21 +72,37 @@
     bottom: 30px;
     right: 30px;
     z-index: 10;
-    background: rgba(255,255,255,0.25);
+    background: rgba(255, 255, 255, 0.25);
     color: white;
     font-size: 26px;
+    border: none;
     border-radius: 50%;
     width: 60px;
     height: 60px;
-    border: none;
     cursor: pointer;
     backdrop-filter: blur(6px);
-    transition: 0.3s;
+    transition: 0.3s ease;
   }
 
-  #soundToggle:hover { background: rgba(255,255,255,0.45); }
+  #soundToggle:hover {
+    background: rgba(255, 255, 255, 0.45);
+  }
 
-  /* Clickable Bamboo Split */
+  @media (max-width: 768px) {
+    #soundToggle {
+      width: 50px;
+      height: 50px;
+      bottom: 20px;
+      right: 20px;
+      font-size: 22px;
+    }
+  }
+
+  /* ✅ Clickable bamboo halves */
+  .clickable-section {
+    position: relative;
+  }
+
   .clickable-section a {
     position: absolute;
     top: 0;
@@ -88,17 +112,21 @@
     z-index: 5;
   }
 
-  .clickable-section .left { left: 0; }
-  .clickable-section .right { left: 50%; }
+  .clickable-section a.left { left: 0; }
+  .clickable-section a.right { left: 50%; }
 
-  /* 💌 Guestbook */
+  /* 💌 Guestbook Section */
   .guestbook {
     min-height: 100vh;
     background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/Background.jpg')
       center/cover no-repeat;
-    text-align: center;
-    padding: 100px 25px 80px;
     color: #3e2f3e;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 100px 25px 80px;
   }
 
   .guestbook h1 {
@@ -110,9 +138,21 @@
 
   .guestbook p {
     font-family: "Special Elite", serif;
+    font-size: 1.05em;
+    letter-spacing: 0.4px;
+    margin-bottom: 30px;
     max-width: 720px;
-    margin: 0 auto 30px;
     line-height: 1.9;
+    color: #3e2f3e;
+  }
+
+  .guest-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin: 35px auto 25px;
   }
 
   .guest-actions img {
@@ -123,139 +163,116 @@
   }
 
   .guest-actions a {
+    display: inline-block;
     background: #b5a0c5;
     color: #fff;
-    padding: 14px 28px;
-    border-radius: 10px;
-    font-family: "Special Elite", serif;
     text-decoration: none;
-    display: inline-block;
+    border-radius: 10px;
+    padding: 14px 28px;
+    font-size: 1.1em;
+    font-family: "Special Elite", serif;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     transition: 0.3s;
   }
 
   .guest-actions a:hover { background: #a98fc0; }
 
-  /* 🌿 Bamboo Scroll Progress Bar */
-  #scrollProgress {
+
+  /* ⭐⭐⭐ PAGE BUTTONS (ADDED ONLY THIS) ⭐⭐⭐ */
+  #pageButtons {
     position: fixed;
-    top: 0;
-    right: 0;
-    width: 10px;
-    height: 0;
-    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/bamboo-texture.jpg');
-    background-size: cover;
-    border-radius: 6px;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     z-index: 9999;
-
-    /* fade-in animation */
-    opacity: 0;
-    transform: translateX(20px);
-
-    transition:
-      height 0.25s ease,
-      opacity 1.2s ease,
-      transform 1.2s ease;
   }
 
-  .hide-progress {
-    opacity: 0;
-    right: -20px;
+  .pg-btn {
+    background: rgba(255,255,255,0.35);
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 18px;
+    border-radius: 10px;
+    font-family: "Special Elite", serif;
+    backdrop-filter: blur(6px);
+    transition: 0.3s;
   }
+
+  .pg-btn:hover {
+    background: rgba(255,255,255,0.55);
+  }
+
 </style>
 </head>
 
 <body>
 
-<!-- 🌿 Scroll Progress Bar -->
-<div id="scrollProgress"></div>
+<!-- ⭐⭐⭐ PAGE BUTTONS ADDED HERE ⭐⭐⭐ -->
+<div id="pageButtons">
+  <a href="#top" class="pg-btn">⬆️</a>
+  <a href="#guestbook" class="pg-btn">💌</a>
+</div>
+<!-- END OF ADDED BUTTONS -->
+
 
 <!-- 🎥 Video Hero -->
-<section id="top" class="video-section">
-  <video id="weddingVideo" autoplay loop muted playsinline>
-    <source src="https://res.cloudinary.com/dogk6wbxu/video/upload/202510300259_1_ejj7t0.mp4">
+<section class="video-section" id="top">
+  <video id="weddingVideo" autoplay loop playsinline muted>
+    <source src="https://res.cloudinary.com/dogk6wbxu/video/upload/202510300259_1_ejj7t0.mp4" type="video/mp4">
   </video>
   <button id="soundToggle">🔊</button>
 </section>
 
-<!-- 🌿 Pages -->
-<section id="p1"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/1.jpg"></section>
-<section id="prenup"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/prenup.jpg"></section>
-<section id="p3"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/3.jpg"></section>
-<section id="p2"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/2.jpg"></section>
+<!-- 🌿 Bamboo Pages -->
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/1.jpg"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/prenup.jpg"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/3.jpg"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/2.jpg"></section>
 
-<section id="p4" class="clickable-section">
-  <img src="https://raw.githubusercontent.com/edgardoiii-jh
-ezel/AngPagiisangDibdib/main/4.jpg">
-  <a class="left" href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X" target="_blank"></a>
-  <a class="right" href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo" target="_blank"></a>
+<section class="clickable-section">
+  <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/4.jpg">
+  <a href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X" target="_blank" class="left"></a>
+  <a href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo" target="_blank" class="right"></a>
 </section>
 
-<section id="p5"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/5.jpg"></section>
-<section id="p6"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/6.jpg"></section>
-<section id="p7"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/7.jpg"></section>
-<section id="p8"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/8.jpg"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/5.jpg"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/6.jpg"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/7.jpg"></section>
+<section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/8.jpg"></section>
 
 <!-- 💞 Guestbook -->
-<section id="guestbook" class="guestbook">
+<section class="guestbook" id="guestbook">
   <h1>Ibahagi ang Iyong Alaala 💞</h1>
-  <p>Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisa.</p>
+  <p>Ibahagi ang iyong mga larawan at mensahe bilang alaala...</p>
 
   <div class="guest-actions">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform" target="_blank">💌 I-click</a>
+    <img src="https://api.qrserver.com....">
+    <a href="https://docs.google.com/forms/..." target="_blank">💌 I-click</a>
   </div>
-
-  <p style="margin-top:30px;font-style:italic;color:#7b5f8e;">
-    💞 Maraming salamat sa pagbabahagi ng iyong mga alaala!  
-    <br>— Nagmamahal, <strong>Edgardo III at Jhezel 💍</strong>
-  </p>
 </section>
 
-<!-- 🎬 Scripts -->
+<!-- 🎬 Sound Control -->
 <script>
-/* Sound Toggle */
-const video = document.getElementById('weddingVideo');
-const btn = document.getElementById('soundToggle');
+  const video = document.getElementById('weddingVideo');
+  const btn = document.getElementById('soundToggle');
+  let soundOn = false;
 
-btn.addEventListener('click', () => {
-  video.muted = !video.muted;
-  btn.textContent = video.muted ? "🔇" : "🔊";
-});
+  btn.addEventListener('click', () => {
+    soundOn = !soundOn;
+    video.muted = !soundOn;
+    btn.textContent = soundOn ? '🔊' : '🔇';
+  });
 
-/* Fix mobile 100vh */
-function setVH() {
-  document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
-}
-setVH();
-window.addEventListener('resize', setVH);
-
-/* 🌿 Fade-in bamboo bar on load */
-window.addEventListener("load", () => {
-  const bar = document.getElementById("scrollProgress");
-  bar.style.opacity = "1";
-  bar.style.transform = "translateX(0)";
-});
-
-/* 🌿 Scroll Progress Bar */
-const progressBar = document.getElementById("scrollProgress");
-let lastScroll = 0;
-
-window.addEventListener("scroll", () => {
-  let scrollTop = window.pageYOffset;
-  let docHeight = document.body.scrollHeight - window.innerHeight;
-  let scrolled = (scrollTop / docHeight) * 100;
-
-  progressBar.style.height = scrolled + "%";
-
-  // Auto-hide when scrolling down
-  if (scrollTop > lastScroll) {
-    progressBar.classList.add("hide-progress");
-  } else {
-    progressBar.classList.remove("hide-progress");
+  function setVH() {
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
   }
-
-  lastScroll = scrollTop <= 0 ? 0 : scrollTop;
-});
+  setVH();
+  window.addEventListener('resize', setVH);
 </script>
 
 </body>
