@@ -19,13 +19,12 @@
     line-height: 0;
   }
 
-  /* 🌿 Perfect seamless vertical stacking for bamboo images */
+  /* 🌿 Perfect seamless vertical stacking */
   section {
     display: block;
     width: 100%;
     margin: 0;
     padding: 0;
-    border: none;
     background: #000;
     position: relative;
   }
@@ -33,26 +32,19 @@
   section img {
     display: block;
     width: 101%;
-    height: auto;
     margin: -0.5px 0 0 -0.5%;
-    padding: 0;
-    border: none;
-    background: #000;
     vertical-align: bottom;
-    image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
   }
 
-  /* 🎥 Fullscreen Video Section */
+  /* 🎥 Video Section */
   :root { --vh: 100%; }
 
   .video-section {
-    position: relative;
     width: 100%;
     height: calc(var(--vh, 1vh) * 100);
     overflow: hidden;
-    margin: 0;
-    padding: 0;
+    position: relative;
   }
 
   .video-section video {
@@ -72,21 +64,19 @@
     bottom: 30px;
     right: 30px;
     z-index: 10;
-    background: rgba(255, 255, 255, 0.25);
+    background: rgba(255,255,255,0.25);
     color: white;
     font-size: 26px;
-    border: none;
     border-radius: 50%;
     width: 60px;
     height: 60px;
+    border: none;
     cursor: pointer;
     backdrop-filter: blur(6px);
-    transition: 0.3s ease;
+    transition: 0.3s;
   }
 
-  #soundToggle:hover {
-    background: rgba(255, 255, 255, 0.45);
-  }
+  #soundToggle:hover { background: rgba(255,255,255,0.45); }
 
   @media (max-width: 768px) {
     #soundToggle {
@@ -98,54 +88,31 @@
     }
   }
 
-  /* 🌸 Minimal circle page buttons */
-  #pageButtons {
+  /* ⭐ NEW: Right-side Scroll Down Arrow (replacing circle buttons) */
+  #scrollRightArrow {
     position: fixed;
     top: 50%;
-    right: 20px;
+    right: 22px;
     transform: translateY(-50%);
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    z-index: 9999;
-  }
-
-  .pg-btn {
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.45);
-    display: block;
-    transition: 0.3s;
-  }
-
-  .pg-btn:hover {
-    background: rgba(255,255,255,0.85);
-  }
-
-  /* ▼ Scroll down indicator */
-  #scrollIndicator {
-    position: fixed;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 28px;
+    font-size: 32px;
     color: white;
-    opacity: 0.7;
-    animation: bounce 1.2s infinite;
+    opacity: 0.8;
+    cursor: pointer;
     z-index: 9999;
-    pointer-events: none;
+    transition: 0.3s;
+    user-select: none;
   }
 
-  @keyframes bounce {
-    0%, 100% { transform: translate(-50%, 0); }
-    50% { transform: translate(-50%, -8px); }
+  #scrollRightArrow:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.15);
   }
 
   @media (max-width: 768px) {
-    #pageButtons { right: 12px; }
-    .pg-btn { width: 12px; height: 12px; }
-    #scrollIndicator { font-size: 22px; bottom: 18px; }
+    #scrollRightArrow {
+      font-size: 26px;
+      right: 14px;
+    }
   }
 
   /* 💌 Guestbook Section */
@@ -168,7 +135,6 @@
   .guestbook p {
     font-family: "Special Elite", serif;
     font-size: 1.05em;
-    letter-spacing: 0.4px;
     max-width: 720px;
     margin: 0 auto 25px;
     line-height: 1.9;
@@ -178,62 +144,46 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     gap: 25px;
-    margin: 25px auto;
   }
 
-  .qr-img {
-    width: 260px;
-    height: 260px;
+  .guest-actions img {
+    width: 250px;
+    height: 250px;
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
   }
 
   .guest-actions a {
-    display: inline-block;
     background: #b5a0c5;
-    color: #fff;
+    color: white;
+    padding: 14px 28px;
     text-decoration: none;
     border-radius: 10px;
-    padding: 14px 28px;
     font-size: 1.1em;
     font-family: "Special Elite", serif;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     transition: 0.3s;
   }
 
   .guest-actions a:hover { background: #a98fc0; }
 
   .closing-message {
+    margin-top: 30px;
     font-style: italic;
     color: #7b5f8e;
-    font-size: 1.05em;
-    margin-top: 30px;
-  }
-
-  @media (max-width: 768px) {
-    .qr-img { width: 200px; height: 200px; }
-    .closing-message { font-size: 0.95em; }
   }
 </style>
 </head>
 
 <body>
 
-<!-- 🌸 Page Buttons (Right side dots) -->
-<div id="pageButtons">
-  <a href="#top" class="pg-btn"></a>
-  <a href="#guestbook" class="pg-btn"></a>
-</div>
-
-<!-- ▼ Scroll Indicator -->
-<div id="scrollIndicator">▼</div>
+<!-- ⭐ NEW RIGHT-SIDE SCROLL ARROW -->
+<div id="scrollRightArrow">▼</div>
 
 <!-- 🎥 Video Hero -->
 <section class="video-section" id="top">
   <video id="weddingVideo" autoplay loop playsinline muted>
-    <source src="https://res.cloudinary.com/dogk6wbxu/video/upload/202510300259_1_ejj7t0.mp4" type="video/mp4">
+    <source src="https://res.cloudinary.com/dogk6wbxu/video/upload/202510300259_1_ejj7t0.mp4">
   </video>
   <button id="soundToggle">🔊</button>
 </section>
@@ -246,8 +196,8 @@
 
 <section class="clickable-section">
   <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/4.jpg">
-  <a href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X" target="_blank" class="left"></a>
-  <a href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo" target="_blank" class="right"></a>
+  <a class="left" href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X" target="_blank"></a>
+  <a class="right" href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo" target="_blank"></a>
 </section>
 
 <section><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/5.jpg"></section>
@@ -259,14 +209,12 @@
 <section class="guestbook" id="guestbook">
   <h1>Ibahagi ang Iyong Alaala 💞</h1>
 
-  <p>Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisa.  
+  <p>Ibahagi ang iyong mga larawan at mensahe bilang alaala ng aming araw ng pag-iisa.
   Ang bawat larawan at mensahe ay magiging bahagi ng aming kwento — mga sandaling habambuhay naming iingatan.</p>
 
   <div class="guest-actions">
-    <img 
-      class="qr-img"
-      src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw%2Fviewform"
-    >
+    <img class="qr-img"
+      src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw%2Fviewform">
 
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform" target="_blank">
       💌 I-click
@@ -274,22 +222,20 @@
   </div>
 
   <p class="closing-message">
-    💞 Maraming salamat sa pagbabahagi ng iyong mga alaala!  
-    <br>Ang iyong mensahe ay magpapasaya sa aming puso sa tuwing aming babalikan ito.  
+    💞 Maraming salamat sa pagbabahagi ng iyong mga alaala!
+    <br>Ang iyong mensahe ay magpapasaya sa aming puso sa tuwing aming babalikan ito.
     <br><br>— Nagmamahal,<br><strong>Edgardo III at Jhezel 💍</strong>
   </p>
 </section>
 
-<!-- 🎬 Sound Control -->
+<!-- 🎬 JS -->
 <script>
   const video = document.getElementById('weddingVideo');
   const btn = document.getElementById('soundToggle');
-  let soundOn = false;
 
   btn.addEventListener('click', () => {
-    soundOn = !soundOn;
-    video.muted = !soundOn;
-    btn.textContent = soundOn ? '🔊' : '🔇';
+    video.muted = !video.muted;
+    btn.textContent = video.muted ? "🔇" : "🔊";
   });
 
   function setVH() {
@@ -297,6 +243,11 @@
   }
   setVH();
   window.addEventListener('resize', setVH);
+
+  /* ⭐ Scroll down when right arrow is clicked */
+  document.getElementById("scrollRightArrow").addEventListener("click", () => {
+    window.scrollBy({ top: window.innerHeight, behavior: "smooth" });
+  });
 </script>
 
 </body>
