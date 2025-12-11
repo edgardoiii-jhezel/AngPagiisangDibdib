@@ -23,7 +23,7 @@
     display: block;
   }
 
-  /* CLICKABLE SECTIONS */
+  /* CLICKABLE IMAGE FIX — allows clicks */
   .clickable-section {
     position: relative;
     width: 100%;
@@ -32,6 +32,7 @@
   .clickable-section img {
     position: relative;
     z-index: 1;
+    pointer-events: none; /* CLICK FIX */
   }
 
   .clickable-zone {
@@ -39,14 +40,14 @@
     top: 0;
     width: 50%;
     height: 100%;
-    z-index: 20;
+    z-index: 999;
     cursor: pointer;
   }
 
   .left-zone { left: 0; }
   .right-zone { right: 0; }
 
-  /* PAGE DOTS */
+  /* DOTS */
   #pageDots {
     position: fixed;
     top: 50%;
@@ -64,7 +65,7 @@
     cursor: pointer;
   }
 
-  /* VIDEO */
+  /* VIDEO HERO */
   :root { --vh: 100%; }
   .video-section {
     position: relative;
@@ -93,31 +94,50 @@
     color: white;
   }
 
-  /* Guestbook */
+  /* GUESTBOOK PAGE (FINAL FIXED VERSION) */
   .guestbook {
     min-height: 100vh;
-    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/Background.jpg') center/cover no-repeat;
-    padding: 100px 20px 80px;
+    background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/guestbook-bg.png') center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    color: #3e2f3e;
+    padding: 40px 20px;
   }
+
   .guestbook h1 {
     font-family: "Allura", cursive;
-    font-size: 3em;
-    color: #8a6b9a;
+    font-size: 46px;
+    color: #6d4d7a;
     margin-bottom: 25px;
+    text-shadow: 0px 0px 6px rgba(255,255,255,0.8);
   }
 
   .qr-img {
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
+    margin-top: 10px;
+    background: white;
+    padding: 8px;
+    border-radius: 14px;
+  }
+
+  @media (max-width: 600px) {
+    .guestbook h1 {
+      font-size: 34px;
+    }
+    .qr-img {
+      width: 170px;
+      height: 170px;
+    }
   }
 </style>
 </head>
 
 <body>
 
-<!-- DOTS -->
+<!-- DOT NAV -->
 <div id="pageDots">
   <div class="dot" onclick="scrollToSection(0)"></div>
   <div class="dot" onclick="scrollToSection(1)"></div>
@@ -140,13 +160,13 @@
   <button id="soundToggle">🔊</button>
 </section>
 
-<!-- STATIC SECTIONS -->
+<!-- NORMAL PAGES -->
 <section id="sec1"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/1.jpg"></section>
 <section id="sec2"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/prenup.jpg"></section>
 <section id="sec3"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/3.jpg"></section>
 <section id="sec4"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/2.jpg"></section>
 
-<!-- PAGE 4 – BOTH SIDES CLICKABLE -->
+<!-- PAGE 4 CLICK LEFT + RIGHT -->
 <section id="sec5" class="clickable-section">
   <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/4.jpg">
 
@@ -161,12 +181,12 @@
   <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/5.jpg">
 </section>
 
-<!-- PAGE 7 – NO CLICKABLE AREA -->
+<!-- PAGE 7 → FIXED RELOCATION -->
 <section id="sec7">
   <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/6.jpg">
 </section>
 
-<!-- PAGE 8 – LEFT SIDE CLICKABLE -->
+<!-- PAGE 8 → CLICKABLE -->
 <section id="sec8" class="clickable-section">
   <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/7.jpg">
 
@@ -179,11 +199,12 @@
   <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/8.jpg">
 </section>
 
-<!-- GUESTBOOK -->
+<!-- GUESTBOOK PAGE -->
 <section class="guestbook" id="sec10">
   <h1>Ibahagi ang Iyong Alaala 💞</h1>
+
   <img class="qr-img"
-    src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw%2Fviewform">
+    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw%2Fviewform">
 </section>
 
 <script>
