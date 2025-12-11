@@ -156,6 +156,27 @@
     line-height: 1.6;
   }
 
+  /* 📌 CLICKABLE LEFT/RIGHT AREAS FIX */
+  .clickable-section {
+    position: relative;
+  }
+
+  .clickable-section a {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    cursor: pointer;
+  }
+
+  .clickable-section a.left {
+    left: 0;
+  }
+
+  .clickable-section a.right {
+    right: 0;
+  }
+
   /* MOBILE */
   @media (max-width: 768px) {
     #pageDots { right: 12px; }
@@ -198,21 +219,36 @@
 <section id="sec3"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/3.jpg"></section>
 <section id="sec4"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/2.jpg"></section>
 
+<!-- ⭐ CLICKABLE IMAGE (PAGE 4) -->
 <section id="sec5" class="clickable-section">
   <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/4.jpg">
-  <a class="left" href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X" target="_blank"></a>
-  <a class="right" href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo" target="_blank"></a>
+
+  <a class="left"
+     href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X"
+     target="_blank"></a>
+
+  <a class="right"
+     href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo"
+     target="_blank"></a>
 </section>
 
-<section id="sec6"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/5.jpg"></section>
+<section id="sec6">
+  <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/5.jpg">
+</section>
+
+<!-- ⭐ CLICKABLE IMAGE (PAGE 7) -->
 <section id="sec7" class="clickable-section">
   <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/6.jpg">
-  <a class="left" 
-href="https://docs.google.com/forms/d/e/1FAIpQLSeMMNS8kddSB5uhbiifdCebH0E_3lYRQo0aoqQue0jcI8N13g/viewform" target="_blank"></a>
+
+  <a class="left"
+     href="https://docs.google.com/forms/d/e/1FAIpQLSeMMNS8kddSB5uhbiifdCebH0E_3lYRQo0aoqQue0jcI8N13g/viewform"
+     target="_blank"></a>
+</section>
+
 <section id="sec8"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/7.jpg"></section>
 <section id="sec9"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/8.jpg"></section>
 
-<!-- 💞 GUESTBOOK (FIXED) -->
+<!-- 💞 GUESTBOOK -->
 <section class="guestbook" id="sec10">
   <div class="guestbook-container">
 
@@ -265,4 +301,3 @@ window.addEventListener('resize', setVH);
 
 </body>
 </html>
-
