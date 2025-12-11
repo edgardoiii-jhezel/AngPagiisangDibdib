@@ -19,51 +19,41 @@
     line-height: 1;
   }
 
-  /* Generic section image */
   section img {
     width: 100%;
     display: block;
     height: auto;
   }
 
-  /* --- Clickable sections --- */
   .clickable-section {
     position: relative;
     width: 100%;
     display: block;
   }
-
-  /* Make sure image doesn't intercept clicks */
   .clickable-section img {
     position: relative;
     z-index: 1;
-    pointer-events: none; /* allow anchors to receive clicks */
+    pointer-events: none;
     display: block;
     width: 100%;
     height: auto;
   }
-
-  /* Anchors are block-level, full height of section */
   .clickable-zone {
     position: absolute;
     top: 0;
     height: 100%;
     width: 50%;
-    display: block;            /* make anchor act as a block */
-    z-index: 10002;            /* above most elements so clicks register */
+    display: block;
+    z-index: 10002;
     cursor: pointer;
     text-decoration: none;
     background: transparent;
     -webkit-tap-highlight-color: transparent;
   }
-
   .left-zone { left: 0; }
   .right-zone { right: 0; }
-
-  /* Give clickable sections a min-height so anchors always have height on very short images */
   .clickable-section { min-height: 240px; }
 
-  /* --- Right side dots --- */
   #pageDots {
     position: fixed;
     top: 50%;
@@ -72,7 +62,7 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
-    z-index: 11000; /* keep dots on top but anchors will still work (anchors have 10002 z-index) */
+    z-index: 11000;
     pointer-events: auto;
   }
   .dot {
@@ -83,7 +73,6 @@
   }
   .dot:hover { background: rgba(255,255,255,0.85); }
 
-  /* --- Video hero --- */
   :root { --vh: 100%; }
   .video-section {
     position: relative;
@@ -114,9 +103,8 @@
     backdrop-filter: blur(6px);
   }
 
-  /* --- Guestbook (sec10) --- */
+  /* --- Guestbook Section --- */
   .guestbook {
-    /* use the original Background.jpg that exists in your repo */
     background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/Background.jpg') center/cover no-repeat;
     min-height: 100vh;
     display: flex;
@@ -129,7 +117,7 @@
     z-index: 1000;
   }
 
-  .guestbook .card {
+  .guestbook .guestbook-container {
     max-width: 820px;
     width: 100%;
     padding: 30px;
@@ -157,6 +145,15 @@
     max-width: 700px;
   }
 
+  /* ✅ FIXED: Center QR & Button */
+  .guest-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+  }
+
   .qr-img {
     width: 180px;
     height: 180px;
@@ -178,9 +175,18 @@
     box-shadow: 0 6px 12px rgba(0,0,0,0.12);
   }
 
-  /* Responsive */
+  /* ✅ FIXED: Last paragraph now uses same font as first paragraph */
+  .closing-message {
+    font-family: "Special Elite", serif !important;
+    font-size: 1.05rem;
+    color: #5a435a;
+    line-height: 1.6;
+    margin-top: 10px;
+    text-align: center;
+  }
+
   @media (max-width: 900px) {
-    .guestbook .card { padding: 20px; }
+    .guestbook .guestbook-container { padding: 20px; }
     .guestbook h1 { font-size: 34px; }
     .qr-img { width: 160px; height: 160px; }
     .clickable-section { min-height: 220px; }
@@ -198,7 +204,6 @@
 </head>
 <body>
 
-<!-- Right-side page dots -->
 <div id="pageDots">
   <div class="dot" onclick="scrollToSection(0)"></div>
   <div class="dot" onclick="scrollToSection(1)"></div>
@@ -213,48 +218,35 @@
   <div class="dot" onclick="scrollToSection(10)"></div>
 </div>
 
-<!-- HERO VIDEO -->
 <section class="video-section" id="sec0">
   <video id="weddingVideo" autoplay loop playsinline muted>
     <source src="https://res.cloudinary.com/dogk6wbxu/video/upload/202510300259_1_ejj7t0.mp4">
   </video>
-  <button id="soundToggle" aria-label="Toggle sound">🔊</button>
+  <button id="soundToggle">🔊</button>
 </section>
 
-<!-- Regular images (static pages) -->
-<section id="sec1"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/1.jpg" alt=""></section>
-<section id="sec2"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/prenup.jpg" alt=""></section>
-<section id="sec3"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/3.jpg" alt=""></section>
-<section id="sec4"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/2.jpg" alt=""></section>
+<section id="sec1"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/1.jpg"></section>
+<section id="sec2"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/prenup.jpg"></section>
+<section id="sec3"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/3.jpg"></section>
+<section id="sec4"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/2.jpg"></section>
 
-<!-- Page 4: left + right click -->
 <section id="sec5" class="clickable-section">
-  <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/4.jpg" alt="">
-  <a class="clickable-zone left-zone"
-     href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X"
-     target="_blank" rel="noopener noreferrer" aria-label="Open left gallery"></a>
-
-  <a class="clickable-zone right-zone"
-     href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo"
-     target="_blank" rel="noopener noreferrer" aria-label="Open right gallery"></a>
+  <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/4.jpg">
+  <a class="clickable-zone left-zone" href="https://drive.google.com/drive/folders/1vK6N46yeG4C9GpxlXmbXlpPaNoxDAw8X" target="_blank"></a>
+  <a class="clickable-zone right-zone" href="https://drive.google.com/drive/folders/1-IOxkbQ9bXQ3wfk2MjyALoQxvoEq4vVo" target="_blank"></a>
 </section>
 
-<section id="sec6"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/5.jpg" alt=""></section>
+<section id="sec6"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/5.jpg"></section>
+<section id="sec7"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/6.jpg"></section>
 
-<!-- Page 7: no click area -->
-<section id="sec7"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/6.jpg" alt=""></section>
-
-<!-- Page 8: clickable LEFT SIDE (this now must work) -->
 <section id="sec8" class="clickable-section">
-  <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/7.jpg" alt="">
-  <a class="clickable-zone left-zone"
-     href="https://docs.google.com/forms/d/e/1FAIpQLSeMMNS8kddSB5uhbiifdCebH0E_3lYRQo0aoqQue0jcI8N13g/viewform"
-     target="_blank" rel="noopener noreferrer" aria-label="Open guest form"></a>
+  <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/7.jpg">
+  <a class="clickable-zone left-zone" href="https://docs.google.com/forms/d/e/1FAIpQLSeMMNS8kddSB5uhbiifdCebH0E_3lYRQo0aoqQue0jcI8N13g/viewform" target="_blank"></a>
 </section>
 
-<section id="sec9"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/8.jpg" alt=""></section>
+<section id="sec9"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/8.jpg"></section>
 
-<!-- 💞 GUESTBOOK (FIXED) -->
+<!-- FINAL PAGE FIXED -->
 <section class="guestbook" id="sec10">
   <div class="guestbook-container">
 
@@ -266,32 +258,31 @@
       mga sandaling habambuhay naming iingatan.
     </p>
 
+    <!-- Centered QR + Button -->
     <div class="guest-actions">
       <img class="qr-img"
         src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw%2Fviewform">
 
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform"
-        target="_blank" class="guest-button">💌 I-click</a>
+      <a class="guest-button"
+        href="https://docs.google.com/forms/d/e/1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw/viewform"
+        target="_blank">💌 I-click</a>
     </div>
 
     <p class="closing-message">
-      💞 Maraming salamat sa pagbabahagi ng iyong mga alaala!
-      <br>Ang iyong mensahe ay magpapasaya sa aming puso sa tuwing aming babalikan ito.
-      <br><br><strong>— Edgardo III at Jhezel 💍</strong>
+      💞 Maraming salamat sa pagbabahagi ng iyong mga alaala!<br>
+      Ang iyong mensahe ay magpapasaya sa aming puso sa tuwing aming babalikan ito.<br><br>
+      <strong>— Edgardo III at Jhezel 💍</strong>
     </p>
 
   </div>
 </section>
 
-
 <script>
   function scrollToSection(i) {
     const el = document.getElementById("sec" + i);
-    if (!el) return;
-    el.scrollIntoView({ behavior: "smooth" });
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   }
 
-  // sound toggle
   const video = document.getElementById('weddingVideo');
   const btn = document.getElementById('soundToggle');
   if (btn && video) {
@@ -301,7 +292,6 @@
     });
   }
 
-  // mobile 100vh fix
   function setVH() {
     document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
   }
@@ -311,4 +301,3 @@
 
 </body>
 </html>
-
