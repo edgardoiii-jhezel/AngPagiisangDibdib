@@ -23,7 +23,7 @@
     display: block;
   }
 
-  /* Make sure click zones REALLY work */
+  /* CLICKABLE SECTIONS */
   .clickable-section {
     position: relative;
     width: 100%;
@@ -32,23 +32,21 @@
   .clickable-section img {
     position: relative;
     z-index: 1;
-    width: 100%;
-    display: block;
   }
 
   .clickable-zone {
     position: absolute;
     top: 0;
-    height: 100%;
     width: 50%;
-    z-index: 99 !important;
+    height: 100%;
+    z-index: 20;
     cursor: pointer;
   }
 
   .left-zone { left: 0; }
   .right-zone { right: 0; }
 
-  /* DOTS */
+  /* PAGE DOTS */
   #pageDots {
     position: fixed;
     top: 50%;
@@ -95,7 +93,7 @@
     color: white;
   }
 
-  /* Guestbook section unchanged */
+  /* Guestbook */
   .guestbook {
     min-height: 100vh;
     background: url('https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/Background.jpg') center/cover no-repeat;
@@ -107,6 +105,12 @@
     font-family: "Allura", cursive;
     font-size: 3em;
     color: #8a6b9a;
+    margin-bottom: 25px;
+  }
+
+  .qr-img {
+    width: 150px;
+    height: 150px;
   }
 </style>
 </head>
@@ -136,13 +140,13 @@
   <button id="soundToggle">🔊</button>
 </section>
 
-<!-- NORMAL SECTIONS -->
+<!-- STATIC SECTIONS -->
 <section id="sec1"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/1.jpg"></section>
 <section id="sec2"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/prenup.jpg"></section>
 <section id="sec3"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/3.jpg"></section>
 <section id="sec4"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/2.jpg"></section>
 
-<!-- FIXED CLICK SECTION (PAGE 4) -->
+<!-- PAGE 4 – BOTH SIDES CLICKABLE -->
 <section id="sec5" class="clickable-section">
   <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/4.jpg">
 
@@ -157,23 +161,29 @@
   <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/5.jpg">
 </section>
 
-<!-- FIXED CLICK SECTION (PAGE 7) -->
-<section id="sec7" class="clickable-section">
+<!-- PAGE 7 – NO CLICKABLE AREA -->
+<section id="sec7">
   <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/6.jpg">
+</section>
+
+<!-- PAGE 8 – LEFT SIDE CLICKABLE -->
+<section id="sec8" class="clickable-section">
+  <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/7.jpg">
 
   <a class="clickable-zone left-zone"
      href="https://docs.google.com/forms/d/e/1FAIpQLSeMMNS8kddSB5uhbiifdCebH0E_3lYRQo0aoqQue0jcI8N13g/viewform"
      target="_blank"></a>
 </section>
 
-<section id="sec8"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/7.jpg"></section>
-<section id="sec9"><img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/8.jpg"></section>
+<section id="sec9">
+  <img src="https://raw.githubusercontent.com/edgardoiii-jhezel/AngPagiisangDibdib/main/8.jpg">
+</section>
 
 <!-- GUESTBOOK -->
 <section class="guestbook" id="sec10">
   <h1>Ibahagi ang Iyong Alaala 💞</h1>
   <img class="qr-img"
-    src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw%2Fviewform">
+    src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https%3A%2F%2Fdocs.google.com%2Fforms%2Fd%2Fe%2F1FAIpQLSe0T0vO9Zi4V3Z0XzTHnggnV8lj8bJfCpQwxtwCyn7juAa4Dw%2Fviewform">
 </section>
 
 <script>
